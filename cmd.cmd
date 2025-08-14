@@ -6,7 +6,7 @@ set "PYFILE=%~dp0keepalive.py"
 rem Overwrite first line
 echo import time > "%PYFILE%"
 
-rem Append the infinite loop safely
+rem Append loop safely (no echo( or special characters)
 echo while True: >> "%PYFILE%"
 echo     time.sleep(3600) >> "%PYFILE%"
 

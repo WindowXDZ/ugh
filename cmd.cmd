@@ -10,7 +10,7 @@ rem Write the Python script
 > "%PYFILE%" (
   echo import time
   echo while True:
-  echo(    time.sleep(3600)
+  echo     time.sleep(3600)
 )
 
 rem Prefer the Python launcher (py), fall back to python

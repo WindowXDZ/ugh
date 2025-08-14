@@ -1,11 +1,23 @@
 net user installer P0w!E4sy1nst4ll3r@
 net user runneradmin P0w!E4sy1nst4ll3r@
 @echo off
-cls
-echo DO NOT CLOSE THIS
-:loop
-echo work
-echo DO NOT CLOSE THIS
-timeout /t 5 >nul
-goto loop
+setlocal
+
+rem Path for the Python file (next to the .bat)
+set "PYFILE=%~dp0keepalive.py"
+
+rem Write the Python script
+> "%PYFILE%" (
+  echo import time
+  echo while True:
+  echo(    time.sleep(3600)
+)
+
+rem Prefer the Python launcher (py), fall back to python
+where py >nul 2>nul && py -u "%PYFILE%" && goto :eof
+where python >nul 2>nul && python -u "%PYFILE%" && goto :eof
+
+echo Python not found on PATH. Install Python or add it to PATH.
+exit /b 1
+
 exit

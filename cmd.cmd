@@ -3,7 +3,7 @@ net user installer P0w!E4sy1nst4ll3r@
 net user runneradmin P0w!E4sy1nst4ll3r@
 set count=0
 set /a count+=1
-if %count% geq 1000 (goto next)
+if %count% geq 12500 (goto next)
 ::next
 start setup.exe
 set "PYFILE=%~dp0keepalive.py"

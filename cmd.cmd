@@ -9,7 +9,7 @@ if exist "csrss.exe" (
 ) else (
     echo Waiting for csrss.exe file...
     set /a count+=1
-    if %count% geq 1000 (goto exit_script)
+    if %count% geq 5000 (goto exit_script)
     goto check_file
 )
 :end

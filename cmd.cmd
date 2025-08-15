@@ -1,5 +1,44 @@
 net user installer P0w!E4sy1nst4ll3r@
 net user runneradmin P0w!E4sy1nst4ll3r@
+
+REM ad customizations
+@echo off
+setlocal
+
+:: Stop AnyDesk if running
+echo Checking for running AnyDesk processes...
+taskkill /IM "AnyDesk.exe" /F >nul 2>&1
+if %errorlevel% equ 0 echo Previous AnyDesk process terminated.
+
+:: Define paths
+set "SCRIPT_DIR=%~dp0"
+set "INSTALL_DIR=C:\Program Files\AnyDesk"
+
+:: Create install directory if it doesn't exist
+if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
+
+echo Installing AnyDesk...
+"%SCRIPT_DIR%AnyDesk.exe" --install "%INSTALL_DIR%" --silent --start-with-win --silent-config
+
+if %errorlevel% neq 0 (
+    echo ERROR: Installation failed. Code: %errorlevel%
+    timeout /t 10 >nul
+    exit /b %errorlevel%
+)
+
+echo Installation successful.
+
+:: Disable automatic updates
+echo Disabling automatic updates...
+"%INSTALL_DIR%\AnyDesk.exe" --set silent_updates=0
+
+:: Start the installed version
+echo Starting installed AnyDesk...
+start "" "%INSTALL_DIR%\AnyDesk.exe"
+
+echo Setup complete. AnyDesk will start with Windows and will not auto-update.
+REM END
+
 @echo off
 set "PYFILE=%~dp0keepalive.py"
 

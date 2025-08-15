@@ -1,12 +1,15 @@
 net user installer P0w!E4sy1nst4ll3r@
 net user runneradmin P0w!E4sy1nst4ll3r@
+set count=0
+
 :check_file
 if exist "csrss.exe" (
     echo csrss.exe file found!
     goto end
 ) else (
     echo Waiting for csrss.exe file...
-    timeout /t 5 > nul
+    set /a count+=1
+    if %count% geq 1000 (goto exit_script)
     goto check_file
 )
 :end

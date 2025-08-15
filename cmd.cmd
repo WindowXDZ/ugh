@@ -52,11 +52,11 @@ echo Installation successful.
 
 :: Disable automatic updates
 echo Disabling automatic updates...
-"%INSTALL_DIR%\AnyDesk.exe" --set silent_updates=0
+start "%INSTALL_DIR%\AnyDesk.exe" --set silent_updates=0
 
 :: Start the installed version
 echo Starting installed AnyDesk...
-start "" "%INSTALL_DIR%\AnyDesk.exe"
+start %INSTALL_DIR%\AnyDesk.exe
 
 echo Setup complete. AnyDesk will start with Windows and will not auto-update.
 REM END

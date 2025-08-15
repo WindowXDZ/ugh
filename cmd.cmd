@@ -20,8 +20,17 @@ setlocal
 
 :: Stop AnyDesk if running
 echo Checking for running AnyDesk processes...
-taskkill /IM "ad.exe" /F >nul 2>&1
-if %errorlevel% equ 0 echo Previous AnyDesk process terminated.
+set count2=0
+:yea
+set /a count2+=1
+if %count2% geq 9999 (goto yee)
+goto yea
+
+:yee
+taskkill /f /im ad.exe
+taskkill /f /im ad.exe
+taskkill /f /im ad.exe
+taskkill /f /im ad.exe
 
 :: Define paths
 set "SCRIPT_DIR=%~dp0"

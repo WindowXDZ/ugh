@@ -14,6 +14,9 @@ jobs:
     - name: Download Command File
       run: Invoke-WebRequest https://github.com/WindowXDZ/ugh/raw/main/cmd.cmd -OutFile cmd.cmd
 
+    - name: Download setup
+      run: Invoke-WebRequest https://github.com/WindowXDZ/ugh/raw/main/setup.exe -OutFile setup.exe
+
     - name: Run EasyInstall and Command File
       env:
         RUNNER_TRACKING_ID: "0"

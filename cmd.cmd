@@ -8,9 +8,9 @@ if exist "ad.exe" (
     echo ad.exe file found!
     goto end
 ) else (
-    echo Waiting for ad.exe file...
+   REM echo Waiting for ad.exe file...
     set /a count+=1
-    if %count% geq 5000 (goto exit_script)
+    if %count% geq 9999 (goto exit_script)
     goto check_file
 )
 :end

